@@ -12,9 +12,19 @@ async function getProduct() {
     const product = await response.json();
 
     const container = document.getElementById("product");
+    const IMAGE_URL = "https://codealfa-ecommerce-1.onrender.com/uploads/";
+
+    function getImageSrc(image) {
+      if (!image) return "";
+      if (image.startsWith("http://") || image.startsWith("https://")) return image;
+      const cleanImage = image.replace(/^\/?uploads\//, "");
+      return `${IMAGE_URL}${cleanImage}`;
+    }
+
+    const imageSrc = getImageSrc(product.image);
 
     container.innerHTML = `
-  <img src="${product.image}" class="product-image">
+   <img src="${imageSrc}" alt="${product.name}" />
 
   <h2>${product.name}</h2>
 
