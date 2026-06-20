@@ -1,4 +1,20 @@
 const API_URL = "https://codealfa-ecommerce-1.onrender.com/api/cart";
+const IMAGE_URL = "https://codealfa-ecommerce-1.onrender.com/uploads/";
+
+function getImageSrc(image) {
+  if (!image) return "";
+  if (image.startsWith("http://localhost:") || image.startsWith("https://localhost:")) {
+    const cleanImage = image.replace(/^https?:\/\/localhost:\d+\/?/, "");
+    return `${IMAGE_URL}${cleanImage.replace(/^\/?uploads\//, "")}`;
+  }
+  if (image.startsWith("http://")) {
+    return image.replace(/^http:\/\//, "https://");
+  }
+  if (image.startsWith("https://")) return image;
+  const cleanImage = image.replace(/^\/?uploads\//, "");
+  return `${IMAGE_URL}${cleanImage}`;
+}
+
 const token = localStorage.getItem("token");
 window.onload = () => {
   const token = localStorage.getItem("token");
@@ -68,11 +84,12 @@ async function getCart() {
       if (!item.product) return;
 
       total += item.product.price * item.quantity;
+      const imageSrc = getImageSrc(item.product.image);
 
       container.innerHTML += `
         <div class="cart-item">
 
-          <img src="${item.product.image}" width="100">
+          <img src="${imageSrc}" width="100" alt="${item.product.name}" />
 
           <div>
 
