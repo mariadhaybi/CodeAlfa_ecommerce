@@ -28,7 +28,14 @@ async function getProducts() {
 
     function getImageSrc(image) {
       if (!image) return "";
-      if (image.startsWith("http://") || image.startsWith("https://")) return image;
+      if (image.startsWith("http://localhost:") || image.startsWith("https://localhost:")) {
+        const cleanImage = image.replace(/^https?:\/\/localhost:\d+\/?/, "");
+        return `${IMAGE_URL}${cleanImage.replace(/^\/?uploads\//, "")}`;
+      }
+      if (image.startsWith("http://")) {
+        return image.replace(/^http:\/\//, "https://");
+      }
+      if (image.startsWith("https://")) return image;
       const cleanImage = image.replace(/^\/?uploads\//, "");
       return `${IMAGE_URL}${cleanImage}`;
     }
