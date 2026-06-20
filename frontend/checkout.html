@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Checkout</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/cartBadge.js"></script>
+</head>
+<body>
+    <div class="navbar">
+    <h2 class="logo">🛍️ Tech Store</h2>
+<div class="nav-links">
+  <a href="index.html">Home</a>
+   <a href="cart.html" id="cartLink">
+  🛒 Cart
+  <span id="cartCount">0</span>
+</a>
+   <a href="login.html" id="loginLink">Login</a>
+  <a href="#" id="logoutBtn">Logout</a>
+  </div>
+</div>
+
+  <h1>🧾 Checkout</h1>
+
+  <form id="checkoutForm">
+
+    <input
+      type="text"
+      id="fullName"
+      placeholder="Full Name"
+      required
+    >
+
+    <input
+      type="text"
+      id="address"
+      placeholder="Address"
+      required
+    >
+
+    <input
+      type="text"
+      id="phone"
+      placeholder="Phone Number"
+      required
+    >
+
+    <button type="submit">
+      Place Order
+    </button>
+
+  </form>
+
+  <script src="js/checkout.js"></script>
+    <script src="js/logout.js"></script>
+
+</body>
+</html>

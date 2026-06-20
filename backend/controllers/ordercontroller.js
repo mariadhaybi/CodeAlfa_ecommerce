@@ -3,15 +3,15 @@ const Cart = require("../models/Cart");
 
 const createOrder = async (req, res) => {
   try {
-    const cart = await Cart.findOne({
-      user: req.user.id,
-    }).populate("items.product");
+    const cart = await Cart.findOne({ user: req.user.id })
+      .populate("items.product");
 
     if (!cart || cart.items.length === 0) {
-      return res.status(400).json({
-        message: "Cart is empty",
-      });
+      return res.status(400).json({ message: "Cart is empty" });
     }
+
+    // 👇 تنظيف
+    cart.items = cart.items.filter(item => item.product);
 
     let totalPrice = 0;
 
@@ -24,6 +24,7 @@ const createOrder = async (req, res) => {
       items: cart.items,
       totalPrice,
     });
+
     cart.items = [];
     await cart.save();
 
