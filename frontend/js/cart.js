@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:5000/api/cart";
+const API_URL = "https://codealfa-ecommerce-1.onrender.com/api/cart";
 const token = localStorage.getItem("token");
 window.onload = () => {
   const token = localStorage.getItem("token");
@@ -124,7 +124,7 @@ async function removeFromCart(productId) {
   try {
     const token = localStorage.getItem("token");
 
-    const response = await fetch(`http://localhost:5000/api/cart/${productId}`, {
+    const response = await fetch(`https://codealfa-ecommerce-1.onrender.com/api/cart/${productId}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -155,7 +155,7 @@ async function updateQty(productId, action) {
   try {
     const token = localStorage.getItem("token");
 
-    const response = await fetch(`http://localhost:5000/api/cart/${productId}`, {
+    const response = await fetch(`https://codealfa-ecommerce-1.onrender.com/api/cart/${productId}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

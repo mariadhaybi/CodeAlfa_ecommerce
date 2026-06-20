@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:5000/api/products";
+const API_URL = "https://codealfa-ecommerce-1.onrender.com/api/products";
 const token = localStorage.getItem("token");
 window.onload = () => {
   const token = localStorage.getItem("token");

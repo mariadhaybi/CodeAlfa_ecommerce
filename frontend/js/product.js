@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:5000/api/products";
+const API_URL = "https://codealfa-ecommerce-1.onrender.com/api/products";
 
 // استخراج id من الرابط
 const params = new URLSearchParams(window.location.search);
@@ -45,7 +45,7 @@ async function addToCart() {
 
     console.log("TOKEN:", token);
 
-    const response = await fetch("http://localhost:5000/api/cart", {
+    const response = await fetch("https://codealfa-ecommerce-1.onrender.com/api/cart", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
